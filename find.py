@@ -1,7 +1,7 @@
 # find.py - A small python utility for comparing strings of multiple files located in single folder.
 # Created by Neerad Vaidya on 9th Feb, 2018 15:58:15 IST
 # Distributed under GNU GPLv3 Licence
-import os, timeit,ctypes,sys,datetime
+import os, timeit, ctypes, sys, datetime
 ctypes.windll.shell32.ShellExecuteW(None,"runas",sys.executable,"",None,1)
 dat=datetime.datetime.now()
 print "Script started @ ",dat
@@ -59,12 +59,12 @@ for a in range(0,lent):
 						print "Unspecified Error"
 				else:
 					print "Files " + fl[a] + " with " + fl[b] + " are already checked"
-fhand=open("result.txt","w")
+fhand = open("result.txt","w")
 for items in simstri:
 	fhand.write(items)
 fhand.close()
-stop=timeit.default_timer()
-elapsed=stop - st
+stop = timeit.default_timer()
+elapsed = stop - st
 m, s = divmod(elapsed, 60)
 h, m = divmod(m, 60)
 print "Script ended @ ", datetime.datetime.now()
