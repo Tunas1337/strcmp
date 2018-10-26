@@ -2,7 +2,9 @@
 # Created by Neerad Vaidya on 9th Feb, 2018 15:58:15 IST
 # Distributed under GNU GPLv3 Licence
 import os, timeit, ctypes, sys, datetime
+from numba import njit, prange
 ctypes.windll.shell32.ShellExecuteW(None,"runas",sys.executable,"",None,1)
+@njit(parallel=True)
 dat=datetime.datetime.now()
 print "Script started @ ",dat
 st=timeit.default_timer()
@@ -15,8 +17,8 @@ for root, dirs, files in os.walk(os.getcwd()):
 			fl.append(names)			
 lent=len(fl)
 print "File listing & indexing Complete"
-for a in range(0,lent):
-		for b in range(1,lent):
+for a in prange(0,lent):
+		for b in prange(1,lent):
 			if a==b:
 				print "Same File, Can't Compare"
 				continue
